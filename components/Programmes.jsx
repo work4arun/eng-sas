@@ -18,7 +18,7 @@ export default function Programmes() {
           <Words
             className="lede"
             delay={0.2}
-            text="Four-year undergraduate programmes. Open any row to see what you will make, not just what you will study."
+            text="Four-year undergraduate programmes, with M.E. Computer Science and Engineering and MBA on top of them. Open any row to see what you will make, not just what you will study."
           />
         </div>
 

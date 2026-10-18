@@ -17,10 +17,45 @@ const heroScript = localFont({
   display: "swap",
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://sasurieengg.com";
+
 export const metadata = {
-  title: "Sasurie College of Engineering | Create your future",
+  metadataBase: new URL(SITE_URL),
+  title: "Sasurie College of Engineering (Autonomous) | Create your future",
   description:
-    "Sasurie College of Engineering (Autonomous), Vijayamangalam, Tiruppur. Engineering programmes built in four layers: foundation, skills, industry and career.",
+    "Sasurie College of Engineering (Autonomous), Vijayamangalam, Tiruppur — B.E. and B.Tech. programmes in eight departments with M.E. and MBA on top, on a 10.61-acre campus off the Coimbatore Bypass (NH544).",
+  keywords: [
+    "Sasurie College of Engineering",
+    "Sasurie",
+    "engineering college Tiruppur",
+    "autonomous engineering college Tamil Nadu",
+    "TNEA",
+    "Vijayamangalam",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Sasurie College of Engineering",
+    title: "Sasurie College of Engineering (Autonomous)",
+    description:
+      "Engineers are built in layers. Foundation, skills, industry, career — at Vijayamangalam, Tiruppur, since 2001.",
+    images: [
+      {
+        url: "/brand/sasurie-og.png",
+        width: 1200,
+        height: 265,
+        alt: "Sasurie College of Engineering (Autonomous)",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sasurie College of Engineering (Autonomous)",
+    description:
+      "Engineers are built in layers. Foundation, skills, industry, career — at Vijayamangalam, Tiruppur, since 2001.",
+    images: ["/brand/sasurie-og.png"],
+  },
 };
 
 export const viewport = { themeColor: "#ffffff" };

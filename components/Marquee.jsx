@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 
 const fields = [
-  "Computer Science", "Artificial Intelligence", "Data Science", "Information Technology",
-  "Electronics", "Electrical", "Mechanical", "Civil",
+  "Computer Science", "Artificial Intelligence", "Data Science", "Cyber Security",
+  "Information Technology", "Electronics", "Electrical", "Mechanical", "Civil",
 ];
 const colors = ["#E01F26", "#FDB913", "#3F6BB5", "#94C93D"];
 

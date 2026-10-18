@@ -110,12 +110,12 @@ export default function Hero() {
             className="lede"
             waitForLoad
             delay={0.55}
-            text="Sasurie College of Engineering takes you from strong fundamentals to a career you chose, one layer at a time, in Vijayamangalam, Tiruppur."
+            text="Sasurie College of Engineering (Autonomous) takes you from strong fundamentals to a career you chose, one layer at a time, at Vijayamangalam on the Coimbatore Bypass."
           />
           <div className={`cta-row hero-in${ready ? " go" : ""}`} style={{ "--delay": "1s" }}>
             <Magnetic>
               <a className="btn btn-primary" href="#admissions">
-                Apply for 2027
+                Apply now
               </a>
             </Magnetic>
             <Magnetic>

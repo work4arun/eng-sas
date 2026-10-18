@@ -9,7 +9,11 @@ export default function Footer() {
       <div className="container footer-grid">
         <Reveal className="footer-brand">
           <Image src="/brand/group-clear.png" alt="Sasurie Group of Institutions" width={1100} height={241} />
-          <p>Sasurie College of Engineering (Autonomous)<br />Vijayamangalam, Tiruppur, Tamil Nadu</p>
+          <p>
+            Sasurie College of Engineering (Autonomous)<br />
+            Coimbatore Bypass (NH544), Vijayamangalam,<br />
+            Tiruppur district, Tamil Nadu – 638056
+          </p>
         </Reveal>
         <Reveal className="footer-links" delay={0.1}>
           <h3>Explore</h3>
@@ -19,10 +23,16 @@ export default function Footer() {
           <a href="#group">Sasurie group</a>
         </Reveal>
         <Reveal className="footer-links" delay={0.2}>
-          <h3>Campuses</h3>
-          <span>Vijayamangalam</span>
-          <span>Tiruppur</span>
-          <span>Coimbatore</span>
+          <h3>Connect</h3>
+          <a href="https://admissions.sasurie.com/" target="_blank" rel="noreferrer">Apply online ↗</a>
+          <a href="https://sasurie.kalvisalai.in/mob/#/" target="_blank" rel="noreferrer">Student login ↗</a>
+          <a href="tel:9488891111">Call 94888 91111</a>
+          <a href="tel:9488892222">Call 94888 92222</a>
+          <a href="mailto:info@sasurie.com">info@sasurie.com</a>
+          <a href="https://www.instagram.com/sasurieinstitution/" target="_blank" rel="noreferrer">Instagram ↗</a>
+          <a href="https://www.facebook.com/sasurieinstitution" target="_blank" rel="noreferrer">Facebook ↗</a>
+          <a href="https://www.linkedin.com/company/sasurie-institution/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a href="https://www.youtube.com/@sasurieinstitutions1919" target="_blank" rel="noreferrer">YouTube ↗</a>
         </Reveal>
       </div>
 
@@ -39,7 +49,7 @@ export default function Footer() {
       </Reveal>
 
       <div className="container footer-base">
-        <p>&copy; 2026 Sasurie Group of Institutions. All rights reserved.</p>
+        <p>&copy; 2026 Sasurie College of Engineering, Vijayamangalam. All rights reserved.</p>
         <a href="#top" className="to-top">Back to top</a>
       </div>
     </footer>

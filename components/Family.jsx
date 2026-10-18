@@ -20,7 +20,7 @@ export default function Family() {
           <Words
             className="lede"
             delay={0.2}
-            text="Six institutions across Vijayamangalam, Tiruppur and Coimbatore, working under one idea: create your future."
+            text="Sasurie College of Engineering sits in the Sasurie Group of Institutions, alongside the arts and science, pharmacy, nursing and research colleges — one idea across the group: create your future."
           />
         </div>
 
