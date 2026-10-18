@@ -1,0 +1,22 @@
+# dependencies
+node_modules
+/.pnp
+.pnp.js
+
+# next.js build and cache
+.next
+out
+build
+
+# temp and unneeded files
+_to_delete
+.DS_Store
+*.pem
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env
+.env*.local
