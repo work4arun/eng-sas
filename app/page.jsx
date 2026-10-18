@@ -11,6 +11,7 @@ import Loader from "@/components/Loader";
 import Cursor from "@/components/Cursor";
 import CornerArrow from "@/components/CornerArrow";
 import Drift from "@/components/Drift";
+import { EXPLORE_LANDING } from "@/lib/site";
 
 export default function Page() {
   return (
@@ -29,7 +30,7 @@ export default function Page() {
         <Admissions />
         <Family />
       </main>
-      <Footer />
+      <Footer exploreLinks={EXPLORE_LANDING} />
     </>
   );
 }

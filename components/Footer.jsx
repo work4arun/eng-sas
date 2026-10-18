@@ -3,7 +3,14 @@ import Reveal from "./Reveal";
 
 const WORDS = ["Create", "your", "future."];
 
-export default function Footer() {
+const EXPLORE = [
+  { href: "#layers", label: "The four layers" },
+  { href: "#programmes", label: "Programmes" },
+  { href: "#admissions", label: "Admissions" },
+  { href: "#group", label: "Sasurie group" },
+];
+
+export default function Footer({ exploreLinks = EXPLORE, homeHref = "#top" }) {
   return (
     <footer className="footer">
       <div className="container footer-grid">
@@ -17,10 +24,16 @@ export default function Footer() {
         </Reveal>
         <Reveal className="footer-links" delay={0.1}>
           <h3>Explore</h3>
-          <a href="#layers">The four layers</a>
-          <a href="#programmes">Programmes</a>
-          <a href="#admissions">Admissions</a>
-          <a href="#group">Sasurie group</a>
+          {exploreLinks.map((l) => (
+            <a
+              key={l.href + l.label}
+              href={l.href}
+              target={l.href.startsWith("http") ? "_blank" : undefined}
+              rel={l.href.startsWith("http") ? "noreferrer" : undefined}
+            >
+              {l.label}
+            </a>
+          ))}
         </Reveal>
         <Reveal className="footer-links" delay={0.2}>
           <h3>Connect</h3>
@@ -50,7 +63,7 @@ export default function Footer() {
 
       <div className="container footer-base">
         <p>&copy; 2026 Sasurie College of Engineering, Vijayamangalam. All rights reserved.</p>
-        <a href="#top" className="to-top">Back to top</a>
+        <a href={homeHref} className="to-top">Back to top</a>
       </div>
     </footer>
   );
