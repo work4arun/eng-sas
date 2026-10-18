@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Tower from "./Tower";
-import Reveal, { Lines, Words } from "./Reveal";
+import Reveal, { Words } from "./Reveal";
 import { LAYERS } from "@/lib/layers";
 
 const PANELS = [
@@ -90,7 +90,6 @@ export default function Story() {
     <section className="story section" id="layers">
       <div className="container">
         <div className="section-head">
-          <Lines lines={["Four layers.", "One direction: up."]} />
           <Words
             className="lede"
             delay={0.2}
