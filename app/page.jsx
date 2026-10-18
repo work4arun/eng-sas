@@ -1,6 +1,5 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Facts from "@/components/Facts";
 import Marquee from "@/components/Marquee";
 import Story from "@/components/Story";
 import Programmes from "@/components/Programmes";
@@ -11,6 +10,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import Loader from "@/components/Loader";
 import Cursor from "@/components/Cursor";
 import CornerArrow from "@/components/CornerArrow";
+import Drift from "@/components/Drift";
 
 export default function Page() {
   return (
@@ -19,10 +19,10 @@ export default function Page() {
       <Cursor />
       <ScrollProgress />
       <CornerArrow />
+      <Drift />
       <Nav />
       <main>
         <Hero />
-        <Facts />
         <Marquee />
         <Story />
         <Programmes />

@@ -6,9 +6,9 @@ import { LAYERS } from "@/lib/layers";
 import { TowerLayers } from "./Tower";
 import Magnetic from "./Magnetic";
 import { Lines, Words } from "./Reveal";
-import Drift from "./Drift";
 import { onLoaded } from "@/lib/loaded";
 import { heroBoldVar } from "@/lib/heroFont";
+import Facts from "./Facts";
 
 const RIPPLES = Array.from({ length: 8 }, (_, i) => i + 1);
 
@@ -102,7 +102,6 @@ export default function Hero() {
 
   return (
     <section className={`hero ${heroBoldVar}`} id="top" ref={root}>
-      <Drift />
       <div className="container hero-grid">
         <div className="hero-copy">
           <Lines as="h1" className="hero-title" waitForLoad lines={["Engineers are", "built in layers."]} />
@@ -110,7 +109,7 @@ export default function Hero() {
             className="lede"
             waitForLoad
             delay={0.55}
-            text="Sasurie College of Engineering (Autonomous) takes you from strong fundamentals to a career you chose, one layer at a time, at Vijayamangalam on the Coimbatore Bypass."
+            text="At Sasurie College of Engineering (Autonomous), we turn core fundamentals into thriving careers—layer by layer, right on the Coimbatore–Tiruppur corridor."
           />
           <div className={`cta-row hero-in${ready ? " go" : ""}`} style={{ "--delay": "1s" }}>
             <Magnetic>
@@ -203,9 +202,7 @@ export default function Hero() {
         </ul>
       </div>
 
-      <a className="scroll-cue" href="#facts" aria-label="Scroll down">
-        <span />
-      </a>
+      <Facts ready={ready} />
     </section>
   );
 }
