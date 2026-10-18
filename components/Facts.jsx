@@ -5,7 +5,7 @@ const facts = [
     color: "var(--green)",
     rgb: "148, 201, 61",
     glow: "rgba(148, 201, 61, 0.16)",
-    text: "Autonomous status was conferred by the UGC and Anna University in January 2026 — the college now writes its own curriculum and conducts its own examinations.",
+    text: "Conferred by UGC and Anna University in 2026, enabling independent, industry-aligned curriculum design and examinations.",
   },
   {
     title: "AICTE approved",
@@ -29,7 +29,7 @@ const facts = [
     color: "var(--red)",
     rgb: "224, 31, 38",
     glow: "rgba(224, 31, 38, 0.14)",
-    text: "Founded by the Ponmudi Muthusamy Gounder Trust, Tiruppur. A 10.61-acre campus at Vijayamangalam on the Coimbatore Bypass (NH544).",
+    text: "Founded by the Ponmudi Muthusamy Gounder Trust, Tiruppur.",
   },
 ];
 

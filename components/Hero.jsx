@@ -31,8 +31,12 @@ export default function Hero() {
     return onLoaded(() => setReady(true));
   }, []);
 
-  // The arrow climbs on its own: a hop passes up the four layers, foundation first, and repeats. Moving
-  // the cursor over the hero makes it climb faster.
+  const focusRef = useRef(focus);
+  focusRef.current = focus;
+
+  // Smooth fluid levitation & harmonic wave:
+  // An ascending wave glides continuously up through the four layers with
+  // fluid zero-gravity buoyancy, smooth mouse parallax depth, and interactive hover response.
   useEffect(() => {
     const sec = root.current;
     const vis = visual.current;
@@ -41,45 +45,73 @@ export default function Hero() {
 
     const byLevel = [];
     vis.querySelectorAll(".tw-par").forEach((el) => (byLevel[Number(el.dataset.level)] = el));
-    const K = 80, Z = 0.55, C = 2 * Z * Math.sqrt(K);
-    const st = [0, 1, 2, 3].map(() => ({ y: 0, vy: 0, s: 1, vs: 0 })); // level 0 is the foundation, 3 the career tip
-    let t = 0, energy = 0, sy = 0, raf = 0, last = 0, lx = null, ly = null;
+
+    let t = 0;
+    let raf = 0;
+    let last = 0;
+    let targetMx = 0, targetMy = 0;
+    let mx = 0, my = 0;
+    let sy = 0;
+    const focusLifts = [0, 0, 0, 0];
 
     const step = (now) => {
-      const dt = Math.min(0.033, (now - last) / 1000);
+      const dt = Math.min(0.05, Math.max(0.001, (now - last) / 1000));
       last = now;
-      energy = Math.max(0, energy - 0.9 * dt);
-      t += dt * (1 + Math.min(energy, 2));
-      const n = Math.max(1, Math.ceil(dt / (1 / 120)));
-      const h = dt / n;
+      t += dt;
+
+      // Smooth damped lerp for mouse parallax
+      const lerpSpeed = 1 - Math.exp(-4 * dt);
+      mx += (targetMx - mx) * lerpSpeed;
+      my += (targetMy - my) * lerpSpeed;
+
+      const currentFocus = focusRef.current;
+
       for (let lv = 0; lv < 4; lv++) {
-        const q = st[lv];
-        const p = (((t / 4.8 - lv * 0.16) % 1) + 1) % 1;
-        const bump = p < 0.45 ? Math.sin((Math.PI * p) / 0.45) ** 2 : 0;
-        const ty = -30 * bump + (lv - 1.5) * sy * -50 * (lv === 0 ? 0.4 : 1);
-        const ts = 1 + 0.05 * bump - Math.min(0.06, Math.abs(q.vy) * 0.0004) * (lv === 0 ? 0.2 : 1);
-        for (let i = 0; i < n; i++) {
-          q.vy += (-K * (q.y - ty) - C * q.vy) * h;
-          q.y += q.vy * h;
-          q.vs += (-90 * (q.s - ts) - 2 * 0.3 * Math.sqrt(90) * q.vs) * h;
-          q.s += q.vs * h;
+        // Continuous ascending harmonic wave (wave propagates from foundation lv:0 up to career lv:3)
+        const wave = Math.sin(t * 1.5 - lv * 0.72) * 8.5 + Math.cos(t * 0.8 - lv * 0.4) * 3.5;
+
+        // Subtle 3D mouse parallax based on layer depth
+        const depth = 1 + lv * 0.35;
+        const px = mx * 10 * depth;
+        const py = my * 7 * depth;
+
+        // Interactive focus lift when hovered
+        const targetLift = currentFocus === lv ? -9 : (currentFocus !== null ? 2 : 0);
+        focusLifts[lv] += (targetLift - focusLifts[lv]) * (1 - Math.exp(-7 * dt));
+
+        // Scroll separation: layers gracefully expand on scroll
+        const scrollSep = (lv - 1.5) * sy * -42 * (lv === 0 ? 0.35 : 1);
+
+        const x = px;
+        const y = wave + py + focusLifts[lv] + scrollSep;
+
+        if (byLevel[lv]) {
+          byLevel[lv].style.transform = `translate(${x.toFixed(2)}px, ${y.toFixed(2)}px)`;
         }
-        if (byLevel[lv]) byLevel[lv].style.transform = `translate(0px, ${q.y.toFixed(2)}px) scale(${(2 - q.s).toFixed(4)}, ${q.s.toFixed(4)})`;
       }
-      raf = requestAnimationFrame(step); // the loop never stops, so the climb is always running
+      raf = requestAnimationFrame(step);
     };
+
     const run = () => {
       if (!raf) {
         last = performance.now();
         raf = requestAnimationFrame(step);
       }
     };
+
     const onMove = (e) => {
-      if (lx !== null) energy = Math.min(2.4, energy + Math.min(Math.hypot(e.clientX - lx, e.clientY - ly), 80) * 0.002);
-      lx = e.clientX;
-      ly = e.clientY;
+      const rect = sec.getBoundingClientRect();
+      const cx = rect.left + rect.width * 0.5;
+      const cy = rect.top + rect.height * 0.5;
+      targetMx = Math.max(-1, Math.min(1, (e.clientX - cx) / (rect.width * 0.5)));
+      targetMy = Math.max(-1, Math.min(1, (e.clientY - cy) / (rect.height * 0.5)));
     };
-    const onLeave = () => (lx = ly = null);
+
+    const onLeave = () => {
+      targetMx = 0;
+      targetMy = 0;
+    };
+
     const onScroll = () => {
       sy = Math.max(0, Math.min(1, window.scrollY / ((sec.offsetHeight || 1) * 0.9)));
       run();
@@ -90,6 +122,7 @@ export default function Hero() {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     run();
+
     return () => {
       sec.removeEventListener("pointermove", onMove);
       sec.removeEventListener("pointerleave", onLeave);
