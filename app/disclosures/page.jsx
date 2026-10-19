@@ -1,13 +1,45 @@
 import PageShell from "@/components/PageShell";
 import FactCards from "@/components/FactCards";
-import { Lines, Words } from "@/components/Reveal";
+import PointList from "@/components/PointList";
+import Reveal, { Lines, Words } from "@/components/Reveal";
 import { DISCLOSURES } from "@/lib/site";
+import {
+  STATUTORY_COMMITTEES,
+  EOA,
+  NIRF,
+  AQAR_CRITERIA,
+  NAAC_DVV,
+  IQAC,
+  EXAMS,
+  CIRCULARS,
+  POLICIES,
+  ANNUAL_ACCOUNTS,
+  COMMITTEES,
+} from "@/lib/documents";
 
 export const metadata = {
-  title: "Disclosures & documents | Sasurie College of Engineering",
+  title: "Disclosures and documents | Sasurie College of Engineering",
   description:
-    "NAAC self-study documents, NIRF submissions, AQAR reports from 2018-19, AICTE extensions of approval, IQAC, acts and statutes, Board of Studies and finance committee records published by Sasurie College of Engineering.",
+    "NAAC documents, NIRF submissions, AQAR reports, AICTE extensions of approval year by year, IQAC, examinations, statutory committees, policies and circulars published by Sasurie College of Engineering.",
 };
+
+const wrap = { display: "grid", gap: "clamp(32px, 5vw, 64px)", marginTop: "clamp(24px, 4vw, 48px)" };
+const mist = { background: "var(--mist)", borderBlock: "1px solid var(--line)" };
+
+function Links({ title, links }) {
+  return (
+    <Reveal>
+      {title && <h3 style={{ fontSize: "1.3rem" }}>{title}</h3>}
+      <div className="cta-row" style={{ marginTop: 14 }}>
+        {links.map((l) => (
+          <a key={l.href + l.label} className="btn btn-ghost btn-sm" href={l.href} target="_blank" rel="noreferrer">
+            {l.label} ↗
+          </a>
+        ))}
+      </div>
+    </Reveal>
+  );
+}
 
 export default function DisclosuresPage() {
   return (
@@ -15,11 +47,11 @@ export default function DisclosuresPage() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <Lines lines={["Everything the college", "publishes about itself."]} />
+            <Lines lines={["Disclosures and", "statutory documents."]} />
             <Words
               className="lede"
               delay={0.2}
-              text="Accreditation and ranking documents, the annual quality reports, the AICTE approvals and the committee records — collected from the college's own pages."
+              text="Accreditation and ranking documents, annual quality reports, AICTE approvals and committee records."
             />
           </div>
         </div>
@@ -42,12 +74,124 @@ export default function DisclosuresPage() {
             ],
           }))}
         />
+      </section>
 
-        <div className="container" style={{ marginTop: "clamp(40px, 6vw, 72px)" }}>
-          <p className="fine" style={{ maxWidth: "72ch" }}>
-            The document files currently sit on the college&apos;s existing website; the links above point there until they are moved onto this site.
-          </p>
-          <div className="cta-row" style={{ marginTop: "clamp(24px, 3vw, 36px)" }}>
+      <section className="section" style={mist}>
+        <div className="container">
+          <div className="section-head">
+            <Lines lines={["Statutory", "committees."]} />
+            <Words
+              className="lede"
+              delay={0.2}
+              text="The bodies that govern the autonomous college: the Governing Body, Academic Council, Standing Committee, Finance Committee, Boards of Study and the Result Passing Board."
+            />
+          </div>
+        </div>
+        <FactCards
+          minWidth={320}
+          items={STATUTORY_COMMITTEES.map((c, i) => ({
+            ...c,
+            color: ["var(--green)", "var(--blue)", "var(--gold)", "var(--red)"][i % 4],
+          }))}
+        />
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <Lines lines={["Approvals and", "accreditation."]} />
+            <Words
+              className="lede"
+              delay={0.2}
+              text="AICTE extensions of approval from 2001, NIRF submissions, AQAR criteria and NAAC data-validation clarifications."
+            />
+          </div>
+          <div style={wrap}>
+            <Links title="AICTE Extension of Approval, by year" links={EOA} />
+            <Links title="NIRF" links={NIRF} />
+            <Links title="AQAR criteria" links={AQAR_CRITERIA} />
+            {NAAC_DVV.map((g) => (
+              <Links key={g.group} title={`NAAC DVV clarifications: ${g.group}`} links={g.links} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={mist}>
+        <div className="container">
+          <div className="section-head">
+            <Lines lines={["Internal Quality", "Assurance Cell."]} />
+            <Words className="lede" delay={0.2} text={`Vision: ${IQAC.vision} Mission: ${IQAC.mission}`} />
+          </div>
+          <div style={wrap}>
+            <Reveal>
+              <h3 style={{ fontSize: "1.3rem", marginBottom: 6 }}>Functions</h3>
+              <PointList items={IQAC.functions} />
+            </Reveal>
+            {IQAC.documents.map((g) => (
+              <Links key={g.group} title={g.group} links={g.links} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <Lines lines={["Controller of", "Examinations."]} />
+            <Words className="lede" delay={0.2} text={EXAMS.lede} />
+          </div>
+          <div style={wrap}>
+            <Reveal>
+              <h3 style={{ fontSize: "1.3rem", marginBottom: 6 }}>Officers</h3>
+              <PointList items={EXAMS.officers} />
+            </Reveal>
+            <Reveal>
+              <h3 style={{ fontSize: "1.3rem", marginBottom: 6 }}>Functions</h3>
+              <PointList items={EXAMS.functions} />
+            </Reveal>
+            {EXAMS.documents.map((g) => (
+              <Links key={g.group} title={g.group} links={g.links} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={mist}>
+        <div className="container">
+          <div className="section-head">
+            <Lines lines={["Policies, circulars", "and accounts."]} />
+            <Words
+              className="lede"
+              delay={0.2}
+              text="Institutional policies, circulars and annual accounts published by the college."
+            />
+          </div>
+          <div style={wrap}>
+            <Reveal>
+              <h3 style={{ fontSize: "1.3rem", marginBottom: 6 }}>Institutional policies</h3>
+              <PointList items={POLICIES} />
+            </Reveal>
+            <Links title="Circulars" links={CIRCULARS} />
+            <Links title="Annual accounts" links={ANNUAL_ACCOUNTS} />
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <Lines lines={["Committees", "and cells."]} />
+            <Words
+              className="lede"
+              delay={0.2}
+              text="Anti-ragging, grievance redressal, internal complaints, equal opportunity and the other committees and cells that the college maintains."
+            />
+          </div>
+          <div style={wrap}>
+            <Links links={COMMITTEES} />
+          </div>
+          <div className="cta-row" style={{ marginTop: "clamp(40px, 6vw, 72px)" }}>
             <a className="btn btn-primary" href="/admissions">Admissions</a>
             <a className="btn btn-ghost" href="/contact">Contact the office</a>
           </div>

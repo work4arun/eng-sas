@@ -19,7 +19,7 @@ const PANELS = [
     years: "Years 2 and 3",
     title: "Skills",
     lead: "Learn by building.",
-    text: "Labs and project work move from demonstrations to things you design yourself — departmental laboratories, the computer centre with high-speed internet, and the Central Library, which holds over 46,468 volumes and DELNET databases of papers.",
+    text: "Labs and project work move from demonstrations to things you design yourself — departmental laboratories, the computer centre with high-speed internet, and the Central Library, which holds more than 46,000 volumes and DELNET databases of papers.",
     points: ["Lab-first teaching in every department", "Mini projects that grow into your final-year project", "Electives, certifications and library research access"],
   },
   {

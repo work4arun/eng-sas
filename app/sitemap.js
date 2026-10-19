@@ -1,3 +1,5 @@
+import { DEPARTMENTS } from "@/lib/departments";
+
 // Served at /sitemap.xml. Extend this array when more routes are added.
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://sasurieengg.com";
 
@@ -14,7 +16,12 @@ const ROUTES = [
 
 export default function sitemap() {
   const lastModified = new Date();
-  return ROUTES.map((r) => ({
+  const departments = DEPARTMENTS.map((d) => ({
+    path: `/departments/${d.slug}`,
+    priority: 0.6,
+    changeFrequency: "monthly",
+  }));
+  return [...ROUTES, ...departments].map((r) => ({
     url: `${SITE_URL}${r.path}`,
     lastModified,
     changeFrequency: r.changeFrequency,

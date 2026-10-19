@@ -16,7 +16,7 @@ export default function AdmissionsPage() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <Lines lines={["Admissions are open.", "Here is the whole route."]} />
+            <Lines lines={["Admissions are open.", "Here is how to apply."]} />
             <Words className="lede" delay={0.2} text={ADMISSION.lede} />
           </div>
         </div>
@@ -45,6 +45,7 @@ export default function AdmissionsPage() {
               Apply online ↗
             </a>
             <a className="btn btn-ghost" href="tel:9488891111">Call 94888 91111</a>
+            <a className="btn btn-ghost" href={ADMISSION.brochureUrl} target="_blank" rel="noreferrer">Admission brochure ↗</a>
           </div>
         </div>
       </section>
@@ -56,7 +57,7 @@ export default function AdmissionsPage() {
             <Words
               className="lede"
               delay={0.2}
-              text="B.E. and B.Tech. admission is through Anna University TNEA counselling on Class-12 merit. These are the minimum marks in Physics, Chemistry and Mathematics the college publishes."
+              text="B.E. and B.Tech. admission is through Anna University TNEA counselling, based on Class 12 marks. Minimum eligibility marks by category are listed below."
             />
           </div>
         </div>
@@ -65,7 +66,7 @@ export default function AdmissionsPage() {
           items={ADMISSION.ugEligibility.map((r, i) => ({
             tag: r.category,
             title: r.category,
-            text: `HSC academic (+1 & +2): ${r.hsc}. Three-year diploma: ${r.diploma}.`,
+            text: `Higher Secondary (Classes 11 and 12): ${r.hsc}. Three-year diploma: minimum ${r.diploma}.`,
             color: ["var(--green)", "var(--blue)", "var(--gold)", "var(--red)"][i % 4],
           }))}
         />
@@ -77,11 +78,11 @@ export default function AdmissionsPage() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <Lines lines={["Postgraduate", "routes."]} />
+            <Lines lines={["Postgraduate", "eligibility."]} />
             <Words
               className="lede"
               delay={0.2}
-              text="M.E. and MBA admissions run on TANCET or the Consortium common entrance test. Here is what each programme accepts."
+              text="M.E. and MBA admission is through TANCET or the Consortium Common Entrance Test. Eligibility for each programme is listed below."
             />
           </div>
         </div>
@@ -99,11 +100,11 @@ export default function AdmissionsPage() {
       <section className="section" style={{ background: "var(--mist)", borderBlock: "1px solid var(--line)" }}>
         <div className="container">
           <div className="section-head">
-            <Lines lines={["Fees, scholarships", "and refunds."]} />
+            <Lines lines={["Scholarships", "and refunds."]} />
             <Words
               className="lede"
               delay={0.2}
-              text="Merit and category scholarships are published by the college, and withdrawals follow an academic-year-wise refund policy."
+              text="Scholarship options for eligible students, and the refund policy for withdrawals."
             />
           </div>
         </div>
@@ -120,6 +121,11 @@ export default function AdmissionsPage() {
           <Reveal>
             <h3 style={{ fontSize: "1.3rem", marginBottom: 6 }}>Fee refund policy</h3>
             <PointList items={[ADMISSION.refund]} />
+            <div className="cta-row" style={{ marginTop: 18 }}>
+              <a className="btn btn-ghost" href={ADMISSION.refundPolicyUrl} target="_blank" rel="noreferrer">
+                Fee refund policy 2024-25 (PDF) ↗
+              </a>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -127,16 +133,16 @@ export default function AdmissionsPage() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <Lines lines={["Ask us", "anything."]} />
+            <Lines lines={["Admission", "enquiries."]} />
             <Words
               className="lede"
               delay={0.2}
-              text={`Admission queries: ${SITE.admissionPhones.join(" / ")}. Email ${SITE.emails[0]}, or use the call-back form on the contact page.`}
+              text={`Call ${SITE.admissionPhones.join(", ")} or email ${SITE.emails[0]}. You can also use the call-back form on the contact page.`}
             />
           </div>
           <div className="cta-row">
-            <a className="btn btn-primary" href="/contact">Contact &amp; call-back</a>
-            <a className="btn btn-ghost" href="/disclosures">Fee &amp; policy documents</a>
+            <a className="btn btn-primary" href="/contact">Contact and call-back</a>
+            <a className="btn btn-ghost" href="/disclosures">Policies and documents</a>
           </div>
         </div>
       </section>

@@ -23,7 +23,7 @@ export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Sasurie College of Engineering (Autonomous) | Create your future",
   description:
-    "Sasurie College of Engineering (Autonomous), Vijayamangalam, Tiruppur — B.E. and B.Tech. programmes in eight departments with M.E. and MBA on top, on a 10.61-acre campus off the Coimbatore Bypass (NH544).",
+    "Sasurie College of Engineering (Autonomous), Vijayamangalam, Tiruppur — B.E. and B.Tech. programmes in eight departments, with postgraduate M.E. and MBA programmes, on a 10.61-acre campus off the Coimbatore Bypass (NH544).",
   keywords: [
     "Sasurie College of Engineering",
     "Sasurie",

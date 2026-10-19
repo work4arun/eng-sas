@@ -14,11 +14,11 @@ export default function Programmes() {
     <section className="programmes section" id="programmes">
       <div className="container prog-grid">
         <div className="prog-head">
-          <Lines lines={["Pick the field", "you want to build in."]} />
+          <Lines lines={["Choose the programme", "that fits your goals."]} />
           <Words
             className="lede"
             delay={0.2}
-            text="Four-year undergraduate programmes, with M.E. Computer Science and Engineering and MBA on top of them. Open any row to see what you will make, not just what you will study."
+            text="Eight four-year B.E. and B.Tech. departments, a common first year in Science and Humanities, and postgraduate study in M.E. Computer Science and Engineering and MBA. Select a programme to see what it covers."
           />
         </div>
 
@@ -43,9 +43,7 @@ export default function Programmes() {
                 <div className="prog-body" id={`prog-${i}`} role="region">
                   <div className="prog-body-in">
                     <p className="prog-line">{p.line}</p>
-                    <p className="prog-build">
-                      <strong>You will build</strong> {p.build}
-                    </p>
+                    <p className="prog-build">{p.build}</p>
                     <ul className="prog-tags">
                       {p.tags.map((t) => (
                         <li key={t}>{t}</li>

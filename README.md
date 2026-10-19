@@ -19,16 +19,19 @@ look is unchanged. Each one is content transferred from the college's existing s
 | route | what it carries |
 |---|---|
 | `/about` | history, trust and founder, vision and mission, chairman / secretary / principal, campus facts, accreditations |
-| `/departments` | the nine undergraduate departments with descriptions and inboxes, plus M.E. CSE and MBA |
+| `/departments` | the nine undergraduate departments, M.E. CSE and MBA, and the Centre for Academic Courses |
+| `/departments/[slug]` | one page per department (11): vision, mission, objectives, outcomes, laboratories |
 | `/facilities` | library, hostels, 12 buses, canteen, dispensary and ambulance, ATM, sports and gym, seminar halls, incubation centre, R&D cell, Wi-Fi and power, accessibility |
 | `/placements` | the DPCD office, its objectives and what it runs; recruiter contact |
 | `/admissions` | TNEA and TANCET routes, UG and PG eligibility, scholarships (STE, sports, differently-abled, single parent), refund policy |
-| `/disclosures` | NAAC, NIRF, AQAR, AICTE EOA, IQAC, acts and statutes, Board of Studies, finance committee, examinations, admission brochure |
+| `/disclosures` | NAAC (with DVV files), NIRF, AQAR, AICTE EOA for every year since 2001, IQAC, examinations, statutory committees, policies, circulars, accounts, committees and cells |
 | `/contact` | phone numbers, emails, address, map link, department inboxes, online services and the call-back form |
 
 ## Where to edit
 
-- `lib/site.js`                          all seeded content: contacts, facilities, disclosures, admissions, about
+- `lib/site.js`                          seeded content: contacts, facilities, admissions, about, governing council
+- `lib/departments.js`                   the 11 department detail pages
+- `lib/documents.js`                     disclosures: year-wise documents, IQAC, examinations, committees
 - `app/*/page.jsx`                       one file per page above
 - `components/PageShell.jsx`             nav + footer for the inner pages (routes instead of anchors)
 - `components/FactCards.jsx`             the card grid used by every inner page
@@ -67,7 +70,7 @@ Spot-check before publishing:
 - **Programmes** — eight B.E./B.Tech. departments plus Science and Humanities, with M.E. Computer Science and Engineering and MBA (HR / Finance / Marketing / Business Analytics) (site: `ug-courses`, `pg-courses`, department mega-menu). Establishment years are only given where the college states them (CSE/IT 2001, EEE 2002).
 - **Eligibility** — UG: Physics + Chemistry + Maths 45% general, 40% BC/MBC/SC/ST, same for three-year diploma; PG: M.E. subject list, MBA degree and TANCET/Consortium CET (site: `admission`).
 - **Scholarships** — Sasurie Talent Examination (up to 100% waiver), sports quota 100% waiver, differently-abled and single-parent scholarships; academic-year-wise fee refund policy (site: `admission`).
-- **Facilities** — library 46,468 volumes / 815 m² / 148 seats / DELNET; 12 GPS buses within 50 km; canteen 900 m² seating 600; dispensary with beds and an ambulance; 24-hour ATM; separate hostels; ramps and washrooms for differently-abled students; solar, UPS and inverters (site: `facilities`, `library`).
+- **Facilities** — library 46,000+ volumes / 815 m² / 148 seats / DELNET; 12 GPS buses within 50 km; canteen 900 m² seating 600; dispensary with beds and an ambulance; 24-hour ATM; separate hostels; ramps and washrooms for differently-abled students; solar, UPS and inverters (site: `facilities`, `library`).
 - **Industry** — 350+ industry partners, 100+ MoUs, Centres of Excellence in Industry 4.0, automation, smart manufacturing and IoT, ₹40 lakh in grants and ₹15 crore of R&D facilities (site: `principal-message`).
 - **Placements** — Department of Placement and Career Development, its block with AV facilities, full-time aptitude and soft-skills trainers, campus and off-campus drives (site: `placement`). The college publishes no placement percentages, so none are claimed.
 - **Documents** — NAAC (IIQA, SSR, certificate, extended profile), NIRF 2023-24 and 2024-25 with DCS, AQAR 2018-19 → 2023-24, AICTE EOA 2020-21 → 2025-26, IQAC, acts and statutes, Board of Studies, finance committee, admission brochure (site: `naac`, `nirf-ranking`, `aqar`, `eoa`, `policies-strategic-plan`).
@@ -77,6 +80,8 @@ Spot-check before publishing:
 ### Still to do
 - **Document files live on the old site.** The links on `/disclosures` point at `sasurieengg.com/wp-content/uploads/...`; copy the PDFs into `public/` and re-point them when the site moves.
 - **Claim check.** The autonomy line, the AICTE approval years, the programme list and the scholarship percentages should be confirmed with the college before publishing.
-- Anything on the old site that this site still does not carry: the per-department pages, individual committee pages, gallery, alumni, RTI/IDP pages, the exam timetable pages, and the NAAC/AQAR tables themselves (only their summaries are here).
+- Not carried over from the old site: gallery, alumni, careers, faculty rosters (the old site's two faculty tables disagree), the research and industry pages (all "coming soon" there), and the NAAC/AQAR tables themselves.
+- Committee member tables are linked, not copied: they hold personal mobile numbers and email addresses of students and outside members.
+- The old site's own pages conflict in places. Open items to confirm with the college: library book count (46,468 in text vs 46,901 in its table; this site says "more than 46,000"), the IQAC and R&D Cell pages still naming a former Principal as chair, Civil's establishment year ("2011, along with the institute"), four departments listing the identical nine laboratories, and the AI and DS inbox being `scesh@`.
 
 Claims that were on the old site as template filler (counters reading 0, "Established since 1900", "45 years", "2.4 million graduates") were deliberately left out; the figures above are the ones the college publishes.

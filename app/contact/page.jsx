@@ -21,11 +21,11 @@ export default function ContactPage() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <Lines lines={["Find us on", "the Coimbatore Bypass."]} />
+            <Lines lines={["Contact", "the college."]} />
             <Words
               className="lede"
               delay={0.2}
-              text="Phone, email, address and the department inboxes — and a call-back form that reaches the admissions desk."
+              text="Telephone, email, address and department contacts, with a call-back form that reaches the admissions desk."
             />
           </div>
         </div>
@@ -34,9 +34,9 @@ export default function ContactPage() {
           minWidth={300}
           items={[
             {
-              tag: "Call",
-              title: "Three numbers",
-              text: SITE.admissionPhones.join(" · "),
+              tag: "Telephone",
+              title: "Admissions and general enquiries",
+              text: "Call any of the numbers below.",
               color: "var(--red)",
               links: SITE.admissionPhones.map((p) => ({
                 label: `Call ${p}`,
@@ -45,7 +45,7 @@ export default function ContactPage() {
             },
             {
               tag: "Email",
-              title: "Write to the college",
+              title: "Email the college",
               text: "General enquiries and the Principal's office.",
               color: "var(--blue)",
               links: SITE.emails.map((e) => ({ label: e, href: `mailto:${e}` })),
@@ -58,8 +58,8 @@ export default function ContactPage() {
               links: [{ label: "Open in Google Maps ↗", href: MAPS }],
             },
             {
-              tag: "Apply & pay",
-              title: "Online services",
+              tag: "Online services",
+              title: "Apply, sign in or pay",
               text: "Apply for admission, sign in to the student portal, or pay fees online.",
               color: "var(--gold)",
               links: [
@@ -74,9 +74,9 @@ export default function ContactPage() {
         <div className="container" style={{ marginTop: "clamp(48px, 7vw, 96px)" }}>
           <div className="adm-panel">
             <div className="adm-copy">
-              <Lines lines={["Straight to", "the right desk."]} />
+              <Lines lines={["Request", "a call back."]} />
               <p className="lede">
-                Each department and office has its own inbox. Writing to the right one gets you a faster answer.
+                Share your details and the admissions desk will call you back to discuss programmes, eligibility and scholarships.
               </p>
             </div>
             <Tilt className="adm-form-wrap" max={5}>
@@ -86,16 +86,17 @@ export default function ContactPage() {
         </div>
 
         <div className="container" style={{ marginTop: "clamp(48px, 7vw, 96px)" }}>
-          <h3 style={{ fontSize: "1.5rem", marginBottom: 24 }}>Department and office contacts</h3>
+          <h3 style={{ fontSize: "1.5rem", marginBottom: 8 }}>Department and office contacts</h3>
+          <p className="fine" style={{ maxWidth: "62ch", marginBottom: 24 }}>Each department and office has its own inbox. Writing to the relevant one gets the fastest response.</p>
         </div>
         <FactCards
           minWidth={260}
           items={DEPARTMENT_CONTACTS.map((d, i) => ({
             tag: "Email",
             title: d.name,
-            text: d.email,
+            text: d.scope,
             color: ["var(--green)", "var(--blue)", "var(--gold)", "var(--red)"][i % 4],
-            links: [{ label: `Write to ${d.email}`, href: `mailto:${d.email}` }],
+            links: [{ label: d.email, href: `mailto:${d.email}` }],
           }))}
         />
 

@@ -2,12 +2,12 @@ import PageShell from "@/components/PageShell";
 import FactCards from "@/components/FactCards";
 import PointList from "@/components/PointList";
 import Reveal, { Lines, Words } from "@/components/Reveal";
-import { ABOUT } from "@/lib/site";
+import { ABOUT, GOVERNING_COUNCIL } from "@/lib/site";
 
 export const metadata = {
   title: "About | Sasurie College of Engineering (Autonomous)",
   description:
-    "Sasurie College of Engineering, Vijayamangalam, Tiruppur — founded in 2001 by the Ponmudi Muthusamy Gounder Trust, autonomous from January 2026, AICTE approved, degrees awarded through Anna University.",
+    "Sasurie College of Engineering, Vijayamangalam, Tiruppur — founded in 2001 by the Ponmudi Muthusamy Gounder Trust, autonomous from January 2026, AICTE approved. Vision, mission, leadership and governing council.",
 };
 
 const LEADERSHIP = ABOUT.leadership.map((l) => ({
@@ -31,8 +31,8 @@ export default function AboutPage() {
         <div className="container" style={{ marginTop: "clamp(48px, 7vw, 96px)" }}>
           <div className="cta-row">
             <a className="btn btn-primary" href="/departments">See the departments</a>
-            <a className="btn btn-ghost" href="/disclosures">Documents &amp; disclosures</a>
-            <a className="btn btn-ghost" href="/contact">Visit or call us</a>
+            <a className="btn btn-ghost" href="/disclosures">Disclosures and documents</a>
+            <a className="btn btn-ghost" href="/contact">Contact us</a>
           </div>
         </div>
       </section>
@@ -40,8 +40,8 @@ export default function AboutPage() {
       <section className="section" style={{ background: "var(--mist)", borderBlock: "1px solid var(--line)" }}>
         <div className="container">
           <div className="section-head">
-            <Lines lines={["Vision and mission,", "in the college's words."]} />
-            <Words className="lede" delay={0.2} text="The two statements the institution publishes as its purpose." />
+            <Lines lines={["Vision", "and mission."]} />
+            <Words className="lede" delay={0.2} text="What the college is working towards, and the principles that guide its work." />
           </div>
         </div>
         <FactCards
@@ -49,30 +49,68 @@ export default function AboutPage() {
           items={[
             { tag: "Our Vision", title: "Vision", text: ABOUT.vision, color: "var(--green)", rgb: "148, 201, 61" },
             { tag: "Our Mission", title: "Mission", text: ABOUT.mission, color: "var(--blue)", rgb: "63, 107, 181" },
+            { tag: "Quality policy", title: "Quality policy", text: ABOUT.qualityPolicy, color: "var(--gold)", rgb: "253, 185, 19" },
           ]}
         />
+        <div className="container" style={{ marginTop: "clamp(40px, 6vw, 72px)" }}>
+          <Reveal>
+            <h3 style={{ fontSize: "1.3rem", marginBottom: 6 }}>Core values</h3>
+            <PointList items={ABOUT.values} />
+          </Reveal>
+        </div>
       </section>
 
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <Lines lines={["Who runs", "the college."]} />
-            <Words className="lede" delay={0.2} text="The trust, the management and the head of the institution, as published on the college's own pages." />
+            <Lines lines={["Leadership", "and management."]} />
+            <Words className="lede" delay={0.2} text="The founding trust, the management and the head of the institution." />
           </div>
         </div>
         <FactCards items={LEADERSHIP} minWidth={320} />
+      </section>
 
-        <div className="container" style={{ marginTop: "clamp(40px, 6vw, 72px)" }}>
+      <section className="section" style={{ background: "var(--mist)", borderBlock: "1px solid var(--line)" }}>
+        <div className="container">
+          <div className="section-head">
+            <Lines lines={["Governing", "council."]} />
+            <Words
+              className="lede"
+              delay={0.2}
+              text="The governing body of the autonomous college, chaired by the Chairman of the Sasurie Group of Institutions, with the Principal as Member Secretary."
+            />
+          </div>
+          <div style={{ display: "grid", gap: "clamp(32px, 5vw, 64px)", marginTop: "clamp(24px, 4vw, 48px)" }}>
+            <Reveal>
+              <h3 style={{ fontSize: "1.3rem", marginBottom: 6 }}>Members</h3>
+              <PointList items={GOVERNING_COUNCIL.members} />
+            </Reveal>
+            <Reveal>
+              <h3 style={{ fontSize: "1.3rem", marginBottom: 6 }}>Role of the Governing Council</h3>
+              <PointList items={GOVERNING_COUNCIL.roles} />
+            </Reveal>
+            <Reveal>
+              <p className="fine" style={{ maxWidth: "62ch" }}>
+                The Academic Council, Standing Committee, Finance Committee, Board of Studies and Result Passing Board are described on the{" "}
+                <a className="to-top" href="/disclosures">Disclosures</a> page.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
           <Reveal>
-            <h3 style={{ fontSize: "1.3rem", marginBottom: 6 }}>What the campus holds</h3>
+            <h3 style={{ fontSize: "1.3rem", marginBottom: 6 }}>The campus at a glance</h3>
             <PointList
               items={[
-                "10.61 acres near Vijayamangalam village, on the Coimbatore Bypass (NH544), Tiruppur district.",
+                "A 10.61-acre campus near Vijayamangalam on the Coimbatore Bypass (NH544), Tiruppur district.",
                 "LCD-equipped classrooms, an auditorium, seminar halls and tutorial rooms.",
-                "Departmental laboratories and a high-speed internet computer centre.",
+                "Departmental laboratories and a computer centre with high-speed internet.",
                 "A power house with solar panels, UPS systems and inverters for uninterrupted supply.",
-                "Separate hostels for boys and girls inside the campus, a 900 m² canteen and a 24-hour ATM.",
-                "Dispensary with bed facility and an ambulance on standby.",
+                "Separate on-campus hostels for boys and girls, a 900 m² canteen and a 24-hour ATM.",
+                "A dispensary with beds, and an ambulance on standby.",
                 "Ramps, rails and washrooms for differently-abled students.",
               ]}
             />
