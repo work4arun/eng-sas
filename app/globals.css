@@ -760,33 +760,19 @@ h2 { font-size: clamp(2.3rem, 5vw, 4.4rem); font-weight: 800; letter-spacing: -0
 .hero-svg, .corner-svg { backface-visibility: hidden; }
 
 
-/* ---------- hero facts: looping motion ---------- */
-/* Uses the independent `translate` property so it composes with the hover/entrance `transform`. */
-@keyframes fact-float {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -4px; }
-}
+/* ---------- hero facts: subtle looping motion ---------- */
+/* A slow, faint highlight glides along each card's top rule; the status dot pulses softly. */
 @keyframes fact-sweep {
   0% { transform: translateX(0); opacity: 0; }
-  10% { opacity: 1; }
-  55% { transform: translateX(163%); opacity: 1; }
+  12% { opacity: 0.55; }
+  50% { transform: translateX(163%); opacity: 0.55; }
   62%, 100% { transform: translateX(163%); opacity: 0; }
 }
-@keyframes fact-shine {
-  0%, 55% { transform: translateX(-160%) skewX(-20deg); }
-  100% { transform: translateX(380%) skewX(-20deg); }
-}
-@keyframes fact-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--rgb, 34, 45, 101), 0); }
-  50% { box-shadow: 0 0 14px -2px rgba(var(--rgb, 34, 45, 101), 0.38); }
+@keyframes fact-pulse-soft {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--rgb, 34, 45, 101), 0.35); }
+  50% { transform: scale(1.08); box-shadow: 0 0 0 5px rgba(var(--rgb, 34, 45, 101), 0); }
 }
 
-.hero-facts .fact-item.is-ready {
-  animation: fact-float 5s ease-in-out infinite;
-  animation-delay: calc(2.2s + var(--i, 0) * 0.45s);
-}
-
-/* a light that travels along each card's top accent line */
 .hero-facts .fact::after {
   content: "";
   position: absolute;
@@ -797,33 +783,15 @@ h2 { font-size: clamp(2.3rem, 5vw, 4.4rem); font-weight: 800; letter-spacing: -0
   background: linear-gradient(90deg, transparent, var(--c, var(--red)), transparent);
   pointer-events: none;
   opacity: 0;
-  animation: fact-sweep 5s ease-in-out infinite;
-  animation-delay: calc(1.8s + var(--i, 0) * 0.6s);
+  animation: fact-sweep 9s ease-in-out infinite;
+  animation-delay: calc(2s + var(--i, 0) * 1.1s);
 }
-
-/* shine sweeping across the tag pill, plus a soft breathing glow */
-.hero-facts .fact-badge {
-  position: relative;
-  overflow: hidden;
-  animation: fact-glow 3.6s ease-in-out infinite;
+.hero-facts .fact-beacon {
+  animation: fact-pulse-soft 3.6s ease-in-out infinite;
   animation-delay: calc(var(--i, 0) * 0.5s);
-}
-.hero-facts .fact-badge::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 40%;
-  background: linear-gradient(100deg, transparent, rgba(var(--rgb, 34, 45, 101), 0.32), transparent);
-  pointer-events: none;
-  animation: fact-shine 4.5s ease-in-out infinite;
-  animation-delay: calc(var(--i, 0) * 0.7s);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-facts .fact-item.is-ready,
   .hero-facts .fact::after,
-  .hero-facts .fact-badge,
-  .hero-facts .fact-badge::after { animation: none; }
+  .hero-facts .fact-beacon { animation: none; }
 }

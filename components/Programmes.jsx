@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Reveal, { Lines, Words } from "./Reveal";
 import { PROGRAMMES } from "@/lib/programmes";
+import { DEPARTMENT_BY_PROGRAMME } from "@/lib/departments";
 
 const colors = ["#E01F26", "#FDB913", "#3F6BB5", "#94C93D"];
 
@@ -20,6 +22,9 @@ export default function Programmes() {
             delay={0.2}
             text="Eight four-year B.E. and B.Tech. departments, a common first year in Science and Humanities, and postgraduate study in M.E. Computer Science and Engineering and MBA. Select a programme to see what it covers."
           />
+          <div className="cta-row">
+            <Link className="btn" href="/departments">View all programmes</Link>
+          </div>
         </div>
 
         <ul className="prog-list">
@@ -49,6 +54,11 @@ export default function Programmes() {
                         <li key={t}>{t}</li>
                       ))}
                     </ul>
+                    {DEPARTMENT_BY_PROGRAMME[p.short] && (
+                      <Link className="btn btn-ghost btn-sm" href={`/departments/${DEPARTMENT_BY_PROGRAMME[p.short].slug}`}>
+                        Department details
+                      </Link>
+                    )}
                   </div>
                 </div>
               </Reveal>

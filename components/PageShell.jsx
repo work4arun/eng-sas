@@ -17,6 +17,9 @@ export default function PageShell({ children, explore = EXPLORE_LANDING }) {
       <ScrollProgress />
       <CornerArrow />
       <Nav links={ROUTES} logoHref="/" ctaHref="/admissions" />
+      <div className="container" style={{ position: "absolute", top: "calc(var(--nav) + 6px)", left: 0, right: 0, zIndex: 5 }}>
+        <a className="to-top" href="/">← Back to home</a>
+      </div>
       <main>{children}</main>
       <Footer exploreLinks={explore} homeHref="/" />
     </>
