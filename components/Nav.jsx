@@ -1,20 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Magnetic from "./Magnetic";
-
-const NAV_LINKS = [
-  { href: "#layers", label: "The four layers" },
-  { href: "#programmes", label: "Programmes" },
-  { href: "#admissions", label: "Admissions" },
-  { href: "#group", label: "Sasurie group" },
-];
+import { ROUTES } from "@/lib/site";
 
 export default function Nav({
-  links = NAV_LINKS,
-  logoHref = "#top",
-  ctaHref = "#admissions",
+  links = ROUTES,
+  logoHref = "/",
+  ctaHref = "/admissions",
   ctaLabel = "Apply now",
 }) {
   const [scrolled, setScrolled] = useState(false);
@@ -30,23 +25,23 @@ export default function Nav({
   return (
     <header className={`nav${scrolled ? " is-scrolled" : ""}${open ? " is-open" : ""}`}>
       <div className="container nav-row">
-        <a className="nav-logo" href={logoHref} aria-label="Sasurie Group of Institutions, home">
+        <Link className="nav-logo" href={logoHref} aria-label="Sasurie Group of Institutions, home">
           <Image src="/brand/group-clear.png" alt="Sasurie Group of Institutions" width={1100} height={241} priority />
-        </a>
+        </Link>
 
         <nav className="nav-links" aria-label="Main">
           {links.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
+            <Link key={l.href} href={l.href} onClick={() => setOpen(false)}>
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="nav-actions">
           <Magnetic>
-            <a className="btn btn-primary btn-sm" href={ctaHref}>
+            <Link className="btn btn-primary btn-sm" href={ctaHref}>
               {ctaLabel}
-            </a>
+            </Link>
           </Magnetic>
           <button
             className="nav-toggle"
@@ -63,13 +58,13 @@ export default function Nav({
 
       <div className="mobile-menu" id="mobile-menu">
         {links.map((l, i) => (
-          <a key={l.href} href={l.href} style={{ "--i": i }} onClick={() => setOpen(false)}>
+          <Link key={l.href} href={l.href} style={{ "--i": i }} onClick={() => setOpen(false)}>
             {l.label}
-          </a>
+          </Link>
         ))}
-        <a className="btn btn-primary" href={ctaHref} style={{ "--i": links.length }} onClick={() => setOpen(false)}>
+        <Link className="btn btn-primary" href={ctaHref} style={{ "--i": links.length }} onClick={() => setOpen(false)}>
           {ctaLabel}
-        </a>
+        </Link>
       </div>
     </header>
   );

@@ -155,7 +155,7 @@ h2 { font-size: clamp(2.3rem, 5vw, 4.4rem); font-weight: 800; letter-spacing: -0
 .nav.is-scrolled { background: rgba(255, 255, 255, 0.82); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); }
 .nav-row { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .nav-logo img { width: clamp(150px, 15vw, 210px); height: auto; }
-.nav-links { display: flex; gap: clamp(20px, 3vw, 40px); }
+.nav-links { display: flex; gap: clamp(14px, 1.8vw, 32px); }
 .nav-links a { padding-block: 6px; font-weight: 600; color: var(--ink); background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat; transition: background-size 0.5s var(--ease); }
 .nav-links a:hover { background-size: 100% 2px; }
 .nav-actions { display: flex; align-items: center; gap: 12px; }

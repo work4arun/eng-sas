@@ -1,7 +1,6 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
-import Story from "@/components/Story";
 import Programmes from "@/components/Programmes";
 import Admissions from "@/components/Admissions";
 import Family from "@/components/Family";
@@ -25,7 +24,6 @@ export default function Page() {
       <main>
         <Hero />
         <Marquee />
-        <Story />
         <Programmes />
         <Admissions />
         <Family />

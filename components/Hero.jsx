@@ -151,8 +151,8 @@ export default function Hero() {
               </a>
             </Magnetic>
             <Magnetic>
-              <a className="btn btn-ghost" href="#layers">
-                See the four layers
+              <a className="btn btn-ghost" href="#programmes">
+                Explore programmes
               </a>
             </Magnetic>
           </div>

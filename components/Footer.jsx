@@ -4,7 +4,6 @@ import Reveal from "./Reveal";
 const WORDS = ["Create", "your", "future."];
 
 const EXPLORE = [
-  { href: "#layers", label: "The four layers" },
   { href: "#programmes", label: "Programmes" },
   { href: "#admissions", label: "Admissions" },
   { href: "#group", label: "Sasurie group" },
