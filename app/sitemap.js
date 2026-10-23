@@ -7,6 +7,8 @@ const ROUTES = [
   { path: "/", priority: 1, changeFrequency: "weekly" },
   { path: "/about", priority: 0.8, changeFrequency: "monthly" },
   { path: "/departments", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/happenings", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/life", priority: 0.7, changeFrequency: "monthly" },
   { path: "/facilities", priority: 0.7, changeFrequency: "monthly" },
   { path: "/placements", priority: 0.8, changeFrequency: "monthly" },
   { path: "/admissions", priority: 0.9, changeFrequency: "weekly" },

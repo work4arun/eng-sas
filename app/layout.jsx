@@ -62,7 +62,7 @@ export const viewport = { themeColor: "#ffffff" };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${googleSans.variable} ${heroScript.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${googleSans.variable} ${heroScript.variable}`}>
       <body>
         <script
           dangerouslySetInnerHTML={{

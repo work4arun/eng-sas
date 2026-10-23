@@ -21,6 +21,8 @@ look is unchanged. Each one is content transferred from the college's existing s
 | `/about` | history, trust and founder, vision and mission, chairman / secretary / principal, campus facts, accreditations |
 | `/departments` | the nine undergraduate departments, M.E. CSE and MBA, and the Centre for Academic Courses |
 | `/departments/[slug]` | one page per department (11): vision, mission, objectives, outcomes, laboratories |
+| `/happenings` | "Happenings at SAS": eight real happenings told on a pinned stage where the big Sasurie arrow climbs and lights the matching layer as you scroll; records and documents listed beneath |
+| `/life` | "Life at SAS": a day in six places, a filterable photo gallery with lightbox (34 photographs), and the college's YouTube uploads behind a click-to-play button |
 | `/facilities` | library, hostels, 12 buses, canteen, dispensary and ambulance, ATM, sports and gym, seminar halls, incubation centre, R&D cell, Wi-Fi and power, accessibility |
 | `/placements` | the DPCD office, its objectives and what it runs; recruiter contact |
 | `/admissions` | TNEA and TANCET routes, UG and PG eligibility, scholarships (STE, sports, differently-abled, single parent), refund policy |
@@ -39,7 +41,10 @@ look is unchanged. Each one is content transferred from the college's existing s
 - `components/Hero.jsx`                  landing headline, intro, buttons, the climbing arrow
 - `components/Facts.jsx`                 the four facts under the hero
 - `components/Story.jsx`                 the four layers (years, lead, text, points)
-- `components/Programmes.jsx`            landing programme list (data in `lib/programmes.js`)
+- `components/Programmes.jsx`            landing "Choose the programme that fits your goals" finder: goal filter, one card per programme, each linking to `/departments/[slug]` (data in `lib/programmes.js`: `PROGRAMMES`, `PG_PROGRAMMES`, `GOALS`)
+- `components/Happenings.jsx`             the scroll-scrubbed arrow stage on `/happenings` (content in `lib/happenings.js`; entries stay sorted by layer)
+- `components/LifeGallery.jsx`            gallery, filters and lightbox on `/life` (photos and captions in `lib/life.js`, files in `public/life/`)
+- `components/VideoReel.jsx`              click-to-play YouTube player on `/life` (channel id in `lib/life.js`)
 - `components/Admissions.jsx`            landing steps; the call-back form is `AdmissionForm.jsx`
 - `components/Family.jsx`                the six Sasurie institutions
 - `components/Footer.jsx`                footer, contact details, "Create your future." watermark

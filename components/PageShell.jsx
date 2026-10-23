@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import ScrollProgress from "./ScrollProgress";
 import Cursor from "./Cursor";
 import CornerArrow from "./CornerArrow";
-import { ROUTES, EXPLORE_LANDING } from "@/lib/site";
+import { EXPLORE_LANDING } from "@/lib/site";
 
 /**
  * Chrome for the seeded inner pages: the landing page's nav and footer, wired to
@@ -16,7 +16,7 @@ export default function PageShell({ children, explore = EXPLORE_LANDING }) {
       <Cursor />
       <ScrollProgress />
       <CornerArrow />
-      <Nav links={ROUTES} logoHref="/" ctaHref="/admissions" />
+      <Nav logoHref="/" ctaHref="/admissions" />
       <div className="container" style={{ position: "absolute", top: "calc(var(--nav) + 6px)", left: 0, right: 0, zIndex: 5 }}>
         <a className="to-top" href="/">← Back to home</a>
       </div>
